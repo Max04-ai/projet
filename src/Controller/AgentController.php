@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Agent;
-use App\Form\AgentType;
+use App\Form\Agent1Type;
 use App\Repository\AgentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class AgentController extends AbstractController
     public function new(Request $request): Response
     {
         $agent = new Agent();
-        $form = $this->createForm(AgentType::class, $agent);
+        $form = $this->createForm(Agent1Type::class, $agent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class AgentController extends AbstractController
      */
     public function edit(Request $request, Agent $agent): Response
     {
-        $form = $this->createForm(AgentType::class, $agent);
+        $form = $this->createForm(Agent1Type::class, $agent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

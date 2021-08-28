@@ -15,26 +15,33 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('username', TextType::class, [
-                'attr' => [
-                    'class' => 'h-full-width'
+    {$builder
+        ->add('email')
+        ->add('name')
+        ->add('firstname')
+        ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms.',
+                    ]),
                 ],
-                'label' => "Nom d'utilisateur"
             ])
-            ->add('email', EmailType::class, [
-                'attr' => [
-                    'class' => 'h-full-width',
-                    "placeholder" => "Email de confirmation vous sera envoyer"
+            ->add('plainPassword', PasswordType::class, [
+                // instead of being set onto the object directly,
+                // this is read and encoded in the controller
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
+                    ]),
                 ],
-                'label' => "Email"
-            ])
-            ->add('password', PasswordType::class, [
-                'attr' => [
-                    "class" => "h-full-width"
-                ],
-                'label' => "Mot de passe"
             ])
         ;
     }
@@ -45,6 +52,7 @@ class RegistrationFormType extends AbstractType
             'data_class' => User::class,
         ]);
     }
+       
 }
 
 

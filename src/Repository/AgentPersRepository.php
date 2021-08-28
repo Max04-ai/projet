@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Agent;
+use App\Entity\AgentPers;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -10,16 +10,16 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @method Agent|null find($id, $lockMode = null, $lockVersion = null)
- * @method Agent|null findOneBy(array $criteria, array $orderBy = null)
- * @method Agent[]    findAll()
- * @method Agent[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AgentPers|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AgentPers|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AgentPers[]    findAll()
+ * @method AgentPers[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AgentRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
+class AgentPersRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Agent::class);
+        parent::__construct($registry, AgentPers::class);
     }
 
     /**
@@ -27,7 +27,7 @@ class AgentRepository extends ServiceEntityRepository implements PasswordUpgrade
      */
     public function upgradePassword(UserInterface $user, string $newHashedPassword): void
     {
-        if (!$user instanceof Agent) {
+        if (!$user instanceof AgentPers) {
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
@@ -37,7 +37,7 @@ class AgentRepository extends ServiceEntityRepository implements PasswordUpgrade
     }
 
     // /**
-    //  * @return Agent[] Returns an array of Agent objects
+    //  * @return AgentPers[] Returns an array of AgentPers objects
     //  */
     /*
     public function findByExampleField($value)
@@ -54,7 +54,7 @@ class AgentRepository extends ServiceEntityRepository implements PasswordUpgrade
     */
 
     /*
-    public function findOneBySomeField($value): ?Agent
+    public function findOneBySomeField($value): ?AgentPers
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

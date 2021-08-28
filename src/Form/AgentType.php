@@ -12,9 +12,10 @@ class AgentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Nom')
-            ->add('prenom')
-            ->add('Telephone')
+            ->add('email')
+            ->add('password')
+            ->add('code_agent')
+            ->add('telephone')
         ;
     }
 

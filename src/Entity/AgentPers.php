@@ -2,17 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Repository\AgentPersRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @ORM\Entity(repositoryClass=AgentPersRepository::class)
  */
-class User implements UserInterface
+class AgentPers implements UserInterface
 {
     /**
      * @ORM\Id
@@ -38,19 +35,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isVerified = false;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $firstname;
+    private $Telephone;
 
     public function getId(): ?int
     {
@@ -133,38 +120,14 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function isVerified(): bool
+    public function getTelephone(): ?string
     {
-        return $this->isVerified;
+        return $this->Telephone;
     }
 
-    public function setIsVerified(bool $isVerified): self
+    public function setTelephone(string $Telephone): self
     {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
+        $this->Telephone = $Telephone;
 
         return $this;
     }
