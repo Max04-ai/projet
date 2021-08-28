@@ -59,6 +59,17 @@ class Agent implements UserInterface
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Parking::class, inversedBy="agents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $parkings;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -196,6 +207,25 @@ class Agent implements UserInterface
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getParkings(): ?Parking
+    {
+        return $this->parkings;
+    }
+
+    public function setParkings(?Parking $parkings): self
+    {
+        $this->parkings = $parkings;
 
         return $this;
     }

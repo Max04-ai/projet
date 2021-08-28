@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Agent;
-use App\Form\Agent1Type;
+use App\Form\AgentType;
 use App\Repository\AgentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class AgentController extends AbstractController
     public function new(Request $request): Response
     {
         $agent = new Agent();
-        $form = $this->createForm(Agent1Type::class, $agent);
+        $form = $this->createForm(AgentType::class, $agent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -41,6 +41,7 @@ class AgentController extends AbstractController
 
             return $this->redirectToRoute('agent_index', [], Response::HTTP_SEE_OTHER);
         }
+
 
         return $this->render('agent/new.html.twig', [
             'agent' => $agent,
@@ -63,7 +64,7 @@ class AgentController extends AbstractController
      */
     public function edit(Request $request, Agent $agent): Response
     {
-        $form = $this->createForm(Agent1Type::class, $agent);
+        $form = $this->createForm(AgentType::class, $agent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

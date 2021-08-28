@@ -15,6 +15,9 @@
                 <th>Code_agent</th>
                 <th>Telephone</th>
                 <th>Is_active</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>Username</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -28,6 +31,9 @@
                 <td>{{ agent.codeAgent }}</td>
                 <td>{{ agent.telephone }}</td>
                 <td>{{ agent.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ agent.createdAt ? agent.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ agent.updatedAt ? agent.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ agent.username }}</td>
                 <td>
                     <a href="{{ path('agent_show', {'id': agent.id}) }}">show</a>
                     <a href="{{ path('agent_edit', {'id': agent.id}) }}">edit</a>
@@ -35,7 +41,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="11">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

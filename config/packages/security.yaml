@@ -4,8 +4,7 @@ security:
             algorithm: auto
         App\Entity\Agent:
             algorithm: auto
-        App\Entity\AgentPers:
-            algorithm: auto
+       
 
 
 
@@ -15,7 +14,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\AgentPers
+                class: App\Entity\User
                 property: email
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)

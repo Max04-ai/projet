@@ -35,6 +35,18 @@
                 <th>Is_active</th>
                 <td>{{ agent.isActive ? 'Yes' : 'No' }}</td>
             </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ agent.createdAt ? agent.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ agent.updatedAt ? agent.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ agent.username }}</td>
+            </tr>
         </tbody>
     </table>
 
