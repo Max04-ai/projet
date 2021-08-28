@@ -23,7 +23,7 @@ class Agent implements UserInterface
      */
     private $email;
 
-    /**
+     /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -48,6 +48,16 @@ class Agent implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $is_active;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
 
     public function getId(): ?int
     {
@@ -75,8 +85,7 @@ class Agent implements UserInterface
     {
         return (string) $this->email;
     }
-
-    /**
+     /**
      * @see UserInterface
      */
     public function getRoles(): array
@@ -94,6 +103,7 @@ class Agent implements UserInterface
 
         return $this;
     }
+
 
     /**
      * @see UserInterface
@@ -162,6 +172,30 @@ class Agent implements UserInterface
     public function setIsActive(bool $is_active): self
     {
         $this->is_active = $is_active;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }

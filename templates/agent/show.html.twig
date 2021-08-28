@@ -12,16 +12,28 @@
                 <td>{{ agent.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
-                <td>{{ agent.Nom }}</td>
+                <th>Email</th>
+                <td>{{ agent.email }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
-                <td>{{ agent.prenom }}</td>
+                <th>Roles</th>
+                <td>{{ agent.roles ? agent.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ agent.password }}</td>
+            </tr>
+            <tr>
+                <th>Code_agent</th>
+                <td>{{ agent.codeAgent }}</td>
             </tr>
             <tr>
                 <th>Telephone</th>
-                <td>{{ agent.Telephone }}</td>
+                <td>{{ agent.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ agent.isActive ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>

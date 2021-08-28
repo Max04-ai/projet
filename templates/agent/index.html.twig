@@ -9,9 +9,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Code_agent</th>
                 <th>Telephone</th>
+                <th>Is_active</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,9 +22,12 @@
         {% for agent in agents %}
             <tr>
                 <td>{{ agent.id }}</td>
-                <td>{{ agent.Nom }}</td>
-                <td>{{ agent.prenom }}</td>
-                <td>{{ agent.Telephone }}</td>
+                <td>{{ agent.email }}</td>
+                <td>{{ agent.roles ? agent.roles|json_encode : '' }}</td>
+                <td>{{ agent.password }}</td>
+                <td>{{ agent.codeAgent }}</td>
+                <td>{{ agent.telephone }}</td>
+                <td>{{ agent.isActive ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('agent_show', {'id': agent.id}) }}">show</a>
                     <a href="{{ path('agent_edit', {'id': agent.id}) }}">edit</a>
@@ -29,7 +35,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
