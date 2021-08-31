@@ -11,14 +11,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AgentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('username')
+            ->add('email', TextType::class, array(
+            'required'=>true,
+            'attr'=>array('class'=>'form-control','placeholder'=>'votre email')
+        ))
+            ->add('username', TextType::class, array(
+            'required'=>true,
+            'attr'=>array('class'=>'form-control','placeholder'=>'votre nom d\'utilisateur')
+        ))
             ->add('code_agent')
             ->add('telephone')
             ->add('is_active')
